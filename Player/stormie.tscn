@@ -1,0 +1,136 @@
+[gd_scene load_steps=14 format=3 uid="uid://cuq1q0pw4mv81"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_yy3vn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82k3e"]
+albedo_color = Color(0.262932, 0.262932, 0.262932, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_tl77j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6u5x5"]
+albedo_color = Color(0.359069, 0.359069, 0.359069, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_y3wwd"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rv84p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imve0"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_b72sf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3fvcj"]
+albedo_color = Color(0.262745, 0.262745, 0.262745, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rwehe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_074lr"]
+albedo_color = Color(0.262745, 0.262745, 0.262745, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_buycs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_adhbs"]
+albedo_color = Color(0.351563, 0.351563, 0.351563, 1)
+
+[node name="Stormie" type="Node3D"]
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(0.997685, 0, 0, 0, 0.997685, 0, 0, 0, 0.997685, 0, 0, 0)
+
+[node name="headBase" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1)
+mesh = SubResource("SphereMesh_yy3vn")
+surface_material_override/0 = SubResource("StandardMaterial3D_82k3e")
+
+[node name="Ears" type="Node3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Ear" type="MeshInstance3D" parent="Head/Ears"]
+transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 0, 2.49324, 1.1528)
+mesh = SubResource("PrismMesh_tl77j")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6u5x5")
+
+[node name="Ear2" type="MeshInstance3D" parent="Head/Ears"]
+transform = Transform3D(-1.31994e-08, 0, 0.25, 0, 0.25, 0, -0.301967, 0, -1.09278e-08, -0.00276814, 2.50981, 0.842193)
+mesh = SubResource("PrismMesh_tl77j")
+skeleton = NodePath("../Ear")
+surface_material_override/0 = SubResource("StandardMaterial3D_6u5x5")
+
+[node name="Eyes" type="Node3D" parent="Head"]
+
+[node name="Eye" type="MeshInstance3D" parent="Head/Eyes"]
+transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, -0.44137, 2.18027, 0.827704)
+mesh = SubResource("SphereMesh_y3wwd")
+skeleton = NodePath("../..")
+
+[node name="Pupil" type="MeshInstance3D" parent="Head/Eyes"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.53372, 2.18512, 1.11028)
+mesh = SubResource("CapsuleMesh_rv84p")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_imve0")
+
+[node name="Eye2" type="MeshInstance3D" parent="Head/Eyes"]
+transform = Transform3D(-0.21, 0, 0, 0, -0.21, 0, 0, 0, -0.21, -0.434958, 2.1671, 1.11282)
+mesh = SubResource("SphereMesh_y3wwd")
+skeleton = NodePath("../Eye")
+
+[node name="Pupil2" type="MeshInstance3D" parent="Head/Eyes"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.53372, 2.18512, 0.815703)
+mesh = SubResource("CapsuleMesh_rv84p")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_imve0")
+
+[node name="Nose" type="Node3D" parent="Head"]
+
+[node name="Nose" type="MeshInstance3D" parent="Head/Nose"]
+transform = Transform3D(6.60041e-09, 4.77671e-16, 0.125, 1.32008e-08, -0.125, 0, 0.151, 1.09278e-08, -5.46392e-09, -0.485832, 1.89825, 0.975961)
+mesh = SubResource("PrismMesh_tl77j")
+skeleton = NodePath("../Ear")
+surface_material_override/0 = SubResource("StandardMaterial3D_6u5x5")
+
+[node name="Body" type="Node3D" parent="."]
+
+[node name="bodyBase" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-3.27835e-08, -0.75, 0, 0.75, -3.27835e-08, 0, 0, 0, 0.75, 0.716697, 1.62833, 1.01317)
+mesh = SubResource("CapsuleMesh_b72sf")
+surface_material_override/0 = SubResource("StandardMaterial3D_3fvcj")
+
+[node name="Legs" type="Node3D" parent="Body"]
+
+[node name="frontLeg" type="MeshInstance3D" parent="Body/Legs"]
+transform = Transform3D(-0.25, 7.54979e-08, 0, -3.7749e-08, -0.5, 0, 0, 0, 0.25, 0.448644, 1.27922, 1.3222)
+mesh = SubResource("CapsuleMesh_b72sf")
+surface_material_override/0 = SubResource("StandardMaterial3D_3fvcj")
+
+[node name="backLeg" type="MeshInstance3D" parent="Body/Legs"]
+transform = Transform3D(-0.25, 7.54979e-08, 0, -3.7749e-08, -0.5, 0, 0, 0, 0.25, 1.16233, 1.27922, 1.3222)
+mesh = SubResource("CapsuleMesh_b72sf")
+surface_material_override/0 = SubResource("StandardMaterial3D_3fvcj")
+
+[node name="frontLeg2" type="MeshInstance3D" parent="Body/Legs"]
+transform = Transform3D(0.25, 0, 0, 0, 0.5, 0, 0, 0, 0.25, 0.413, 1.28021, 0.681827)
+mesh = SubResource("CapsuleMesh_rwehe")
+surface_material_override/0 = SubResource("StandardMaterial3D_074lr")
+
+[node name="backLeg2" type="MeshInstance3D" parent="Body/Legs"]
+transform = Transform3D(0.25, 0, 0, 0, 0.5, 0, 0, 0, 0.25, 1.12669, 1.28021, 0.681827)
+mesh = SubResource("CapsuleMesh_rwehe")
+surface_material_override/0 = SubResource("StandardMaterial3D_074lr")
+
+[node name="Tail" type="Node3D" parent="."]
+
+[node name="tailBottom" type="MeshInstance3D" parent="Tail"]
+transform = Transform3D(0.324837, 0.380107, 0, -0.380107, 0.324837, 0, 0, 0, 0.5, 1.39598, 2.08319, 0.990762)
+mesh = SubResource("CapsuleMesh_buycs")
+surface_material_override/0 = SubResource("StandardMaterial3D_adhbs")
+
+[node name="tailMiddle" type="MeshInstance3D" parent="Tail"]
+transform = Transform3D(0.335628, 0.21761, 0, -0.215976, 0.333109, 0.048914, 0.0266104, -0.0410423, 0.396998, 1.74528, 2.49487, 0.990762)
+mesh = SubResource("CapsuleMesh_buycs")
+surface_material_override/0 = SubResource("StandardMaterial3D_adhbs")
+
+[node name="tailTop" type="MeshInstance3D" parent="Tail"]
+transform = Transform3D(0.168417, 0.1077, 0.00601657, -0.106512, 0.164278, 0.0408411, 0.0170511, -0.037596, 0.195693, 1.91973, 2.83222, 0.990005)
+mesh = SubResource("CapsuleMesh_buycs")
+surface_material_override/0 = SubResource("StandardMaterial3D_adhbs")
