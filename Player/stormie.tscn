@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cuq1q0pw4mv81"]
+[gd_scene load_steps=17 format=3 uid="uid://cuq1q0pw4mv81"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_yy3vn"]
 
@@ -32,6 +32,115 @@ albedo_color = Color(0.262745, 0.262745, 0.262745, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_adhbs"]
 albedo_color = Color(0.351563, 0.351563, 0.351563, 1)
 
+[sub_resource type="Animation" id="Animation_tngdr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 3.14159)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../backLeg2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../backLeg:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -3.14159)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../frontLeg2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rijya"]
+resource_name = "Legs"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 3.14159), Vector3(0, 0, 2.35619), Vector3(0, 0, 3.14159)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../backLeg2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.785398), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../backLeg:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.785398), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../frontLeg2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 3.14159), Vector3(0, 0, 2.35619), Vector3(0, 0, 3.14159)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_va0rd"]
+_data = {
+"Legs": SubResource("Animation_rijya"),
+"RESET": SubResource("Animation_tngdr")
+}
+
 [node name="Stormie" type="Node3D"]
 
 [node name="Head" type="Node3D" parent="."]
@@ -43,7 +152,6 @@ mesh = SubResource("SphereMesh_yy3vn")
 surface_material_override/0 = SubResource("StandardMaterial3D_82k3e")
 
 [node name="Ears" type="Node3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Ear" type="MeshInstance3D" parent="Head/Ears"]
 transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 0, 2.49324, 1.1528)
@@ -99,12 +207,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_3fvcj")
 [node name="Legs" type="Node3D" parent="Body"]
 
 [node name="frontLeg" type="MeshInstance3D" parent="Body/Legs"]
-transform = Transform3D(-0.25, 7.54979e-08, 0, -3.7749e-08, -0.5, 0, 0, 0, 0.25, 0.448644, 1.27922, 1.3222)
-mesh = SubResource("CapsuleMesh_b72sf")
-surface_material_override/0 = SubResource("StandardMaterial3D_3fvcj")
-
-[node name="backLeg" type="MeshInstance3D" parent="Body/Legs"]
-transform = Transform3D(-0.25, 7.54979e-08, 0, -3.7749e-08, -0.5, 0, 0, 0, 0.25, 1.16233, 1.27922, 1.3222)
+transform = Transform3D(-0.25, -7.54979e-08, 0, 3.77489e-08, -0.5, 0, 0, 0, 0.25, 0.448644, 1.27922, 1.3222)
 mesh = SubResource("CapsuleMesh_b72sf")
 surface_material_override/0 = SubResource("StandardMaterial3D_3fvcj")
 
@@ -113,24 +216,30 @@ transform = Transform3D(0.25, 0, 0, 0, 0.5, 0, 0, 0, 0.25, 0.413, 1.28021, 0.681
 mesh = SubResource("CapsuleMesh_rwehe")
 surface_material_override/0 = SubResource("StandardMaterial3D_074lr")
 
+[node name="backLeg" type="MeshInstance3D" parent="Body/Legs"]
+transform = Transform3D(-0.25, 7.54979e-08, 0, -3.7749e-08, -0.5, 0, 0, 0, 0.25, 0.996, 1.279, 1.322)
+mesh = SubResource("CapsuleMesh_b72sf")
+surface_material_override/0 = SubResource("StandardMaterial3D_3fvcj")
+
 [node name="backLeg2" type="MeshInstance3D" parent="Body/Legs"]
-transform = Transform3D(0.25, 0, 0, 0, 0.5, 0, 0, 0, 0.25, 1.12669, 1.28021, 0.681827)
+transform = Transform3D(0.25, 0, 0, 0, 0.5, 0, 0, 0, 0.25, 0.996318, 1.28021, 0.681827)
 mesh = SubResource("CapsuleMesh_rwehe")
 surface_material_override/0 = SubResource("StandardMaterial3D_074lr")
 
 [node name="Tail" type="Node3D" parent="."]
 
 [node name="tailBottom" type="MeshInstance3D" parent="Tail"]
-transform = Transform3D(0.324837, 0.380107, 0, -0.380107, 0.324837, 0, 0, 0, 0.5, 1.39598, 2.08319, 0.990762)
-mesh = SubResource("CapsuleMesh_buycs")
-surface_material_override/0 = SubResource("StandardMaterial3D_adhbs")
-
-[node name="tailMiddle" type="MeshInstance3D" parent="Tail"]
-transform = Transform3D(0.335628, 0.21761, 0, -0.215976, 0.333109, 0.048914, 0.0266104, -0.0410423, 0.396998, 1.74528, 2.49487, 0.990762)
+transform = Transform3D(0.324837, 0.380107, 0, -0.380107, 0.324837, 0, 0, 0, 0.5, 1.40188, 2.08319, 0.990762)
 mesh = SubResource("CapsuleMesh_buycs")
 surface_material_override/0 = SubResource("StandardMaterial3D_adhbs")
 
 [node name="tailTop" type="MeshInstance3D" parent="Tail"]
-transform = Transform3D(0.168417, 0.1077, 0.00601657, -0.106512, 0.164278, 0.0408411, 0.0170511, -0.037596, 0.195693, 1.91973, 2.83222, 0.990005)
+transform = Transform3D(0.335628, 0.21761, 0, -0.215976, 0.333109, 0.048914, 0.0266104, -0.0410423, 0.396998, 1.77788, 2.49487, 0.990762)
 mesh = SubResource("CapsuleMesh_buycs")
 surface_material_override/0 = SubResource("StandardMaterial3D_adhbs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Body/Legs/frontLeg")
+libraries = {
+"": SubResource("AnimationLibrary_va0rd")
+}
