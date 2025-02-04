@@ -1,3 +1,5 @@
+AnimationPlayer
+PhysicalBone3D
 MeshInstance3D
 Node3D
 CharacterBody3D
